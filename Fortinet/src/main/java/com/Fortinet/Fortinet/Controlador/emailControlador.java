@@ -1,9 +1,9 @@
 package com.Fortinet.Fortinet.Controlador;
 
-import com.example.registro.DTO.usuarioDTO;
-import com.example.registro.Entidades.Usuario;
-import com.example.registro.Servicio.Usuario.emailService;
-import com.example.registro.Servicio.Usuario.servicioUsuario;
+import com.Fortinet.Fortinet.Servicio.servicioUsuario;
+import com.Fortinet.Fortinet.Entidades.Usuario;
+import com.Fortinet.Fortinet.DTO.usuarioDTO;
+import com.Fortinet.Fortinet.Servicio.emailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

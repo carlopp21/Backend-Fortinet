@@ -8,9 +8,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
-import java.util.UUID;
 
 
 @Service
@@ -28,18 +26,7 @@ public class servicioUsuario {
         this.usuariorepositorio = usuariorepositorio;
     }
 
-    public servicioUsuario(usuarioRepositorio usuariorepositorio){
-        this.usuariorepositorio = usuariorepositorio;
-    }
-
     public Usuario registroUsuario(usuarioDTO dto){
-
-        // 1. UUID.randomUUID(): Genera un identificador único universal (UUID versión 4)
-        // 2. .substring(0, 8): Toma los primeros 8 caracteres del UUID
-
-        String codigo = "DSMP-" + UUID.randomUUID().toString().substring(0,3).toUpperCase();
-        LocalDateTime expiracion = LocalDateTime.now().plusDays(7); // Genera fecha
-
         Usuario usuarioCreado  = Usuario.builder()
                 .nombreUsuario(dto.getNombreUsuario())
                 .numeroTelefono(dto.getNumeroTelefono())
@@ -48,8 +35,6 @@ public class servicioUsuario {
                 .nombreEmpresa(dto.getNombreEmpresa())
 
                 .build();
-
-
         Usuario creado = usuariorepositorio.save(usuarioCreado);
 
         try {

@@ -1,8 +1,8 @@
 package com.Fortinet.Fortinet.Usuario;
 
-import com.example.registro.DTO.usuarioDTO;
-import com.example.registro.Entidades.Usuario;
-import com.example.registro.Repositorio.usuarioRepositorio;
+import com.Fortinet.Fortinet.DTO.usuarioDTO;
+import com.Fortinet.Fortinet.Entidades.Usuario;
+import com.Fortinet.Fortinet.Repositorio.usuarioRepositorio;
 import jakarta.mail.MessagingException;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,13 +44,9 @@ public class servicioUsuario {
         Usuario usuarioCreado  = Usuario.builder()
                 .nombreUsuario(dto.getNombreUsuario())
                 .numeroTelefono(dto.getNumeroTelefono())
-                .sectorIndustrial(dto.getSectorIndustrial())
                 .cargoUsuario(dto.getCargoUsuario())
                 .correoUsuario(dto.getCorreoUsuario())
-                .lugarUsuario(dto.getLugarUsuario())
                 .nombreEmpresa(dto.getNombreEmpresa())
-                .codigoDescuento(codigo)
-                .expiracionCodigo(expiracion)
                 .build();
 
 
@@ -68,15 +64,11 @@ public class servicioUsuario {
     public List<Usuario> MostrarTodos(){
         return usuariorepositorio.findAll();
     }
-    public List<Usuario> MostrarPorSector(String sectorIndustrial){
-        return usuariorepositorio.findBySectorIndustrial(sectorIndustrial);
-    }
+
     public List<Usuario> MostrarPorCargos(String cargoUsuario){
         return usuariorepositorio.findByCargoUsuario(cargoUsuario);
     }
-    public List<Usuario>MostrarPorLugar(String lugarUsuario){
-        return usuariorepositorio.findByLugarUsuario(lugarUsuario);
-    }
+
     public List<Usuario>MostrarPorCorreo(String correoUsuario){
         return usuariorepositorio.findByCorreoUsuario(correoUsuario);
     }

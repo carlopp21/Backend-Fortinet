@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<h3 th:text="'Empresa del remitente: ' + ${nombreEmpresa}"></h3>
+<p>Nombre registrado: <strong th:text="${nombreUsuario}"></strong></p>
+<p>Cargo del registrado: <b th:text="${cargoUsuario}"></b></p>
+<p>Contacto: <b th:text="${numeroTelefono}"></b></p>
+<p>Correo usuario: <span th:text="${correoUsuario}"></span></p>
+<p>Nit: <b th:text="${nitEmpresa}"></b></p>
+<p>Licencia a renovar: <b th:text="${tipoLicencia}"></b></p>
+
+<p>Atentamente,<br>Equipo DataServic</p>
+</body>
+</html>

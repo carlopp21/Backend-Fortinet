@@ -1,6 +1,6 @@
 package com.Fortinet.Fortinet.Usuario;
 
-import com.example.registro.Entidades.Usuario;
+import com.Fortinet.Fortinet.Entidades.Usuario;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +24,7 @@ public class emailService {
         Context ctx = new Context();
         ctx.setVariable("nombreEmpresa", usuario.getNombreEmpresa());
         ctx.setVariable("numeroTelefono", usuario.getNumeroTelefono());
-        ctx.setVariable("codigoDescuento", usuario.getCodigoDescuento());
-        ctx.setVariable("expiracionFecha", usuario.getExpiracionCodigo().toLocalDate());
+
 
         //Procesamiento-plantilla
         String htmlBody = templateEngine.process("email", ctx);
