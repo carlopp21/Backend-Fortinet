@@ -1,6 +1,8 @@
 package com.Fortinet.Fortinet.DTO;
 import com.Fortinet.Fortinet.Enum.enumLicencia;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -20,6 +22,7 @@ public class usuarioDTO {
     @NotBlank(message = "NIT de la empresa no puede estar vacío")
     private String nitEmpresa;
 
+    @Enumerated(EnumType.STRING)
     @NotNull(message = "El tipo de licencia es obligatorio")
     private enumLicencia tipoLicencia;
 

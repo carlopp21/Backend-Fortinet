@@ -29,7 +29,7 @@ public class Usuario {
     private String nitEmpresa;
 
     @Enumerated(EnumType.STRING)
-    @NotNull
+    @NotNull(message = "El tipo de licencia es obligatorio")
     private enumLicencia tipoLicencia;
 
     @NotBlank(message = "El puesto del usuario no puede estar vacio")
