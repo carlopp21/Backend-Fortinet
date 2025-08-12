@@ -15,10 +15,14 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @CrossOrigin(
-        origins = "https://fortinet-5ifb-jdlkh2l4i-carlos-joel-mancipe-arrietas-projects.vercel.app",
+        origins = {
+                "https://fortinet-5ifb.vercel.app",
+                "https://fortinet-5ifb-jdlkh2l4i-carlos-joel-mancipe-arrietas-projects.vercel.app"
+        },
         methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.OPTIONS },
         allowedHeaders = "*"
 )
+
 
 @RestController
 @RequestMapping("api/usuario")
