@@ -20,7 +20,7 @@ public class usuarioDTO {
     @NotBlank(message = "NIT de la empresa no puede estar vacío")
     private String nitEmpresa;
 
-    @NotNull(message = "El tipo de licencia no puede ser nulo")
+    @NotNull(message = "El tipo de licencia es obligatorio")
     private enumLicencia tipoLicencia;
 
     @NotBlank(message = "El puesto del usuario no puede estar vacío")

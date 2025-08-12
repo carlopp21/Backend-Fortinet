@@ -27,6 +27,7 @@ public class servicioUsuario {
     }
 
     public Usuario registroUsuario(usuarioDTO dto){
+
         Usuario usuarioCreado  = Usuario.builder()
                 .nombreEmpresa(dto.getNombreEmpresa())
                 .nombreUsuario(dto.getNombreUsuario())

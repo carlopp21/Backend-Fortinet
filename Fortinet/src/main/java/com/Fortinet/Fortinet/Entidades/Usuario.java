@@ -3,6 +3,7 @@ package com.Fortinet.Fortinet.Entidades;
 import com.Fortinet.Fortinet.Enum.enumLicencia;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -28,7 +29,7 @@ public class Usuario {
     private String nitEmpresa;
 
     @Enumerated(EnumType.STRING)
-    @NotBlank(message = "Nombre de usuario no puede estar vacio")
+    @NotNull
     private enumLicencia tipoLicencia;
 
     @NotBlank(message = "El puesto del usuario no puede estar vacio")
