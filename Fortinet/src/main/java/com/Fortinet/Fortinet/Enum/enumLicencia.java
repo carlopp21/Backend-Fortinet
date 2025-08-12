@@ -1,8 +1,8 @@
 package com.Fortinet.Fortinet.Enum;
 
 public enum enumLicencia {
-    BITDEFENDER,
-    ESET,
-    KASPERSKY,
+    Bitdefender,
+    eset,
+    Kaspersky,
     SOPHOS;
 }

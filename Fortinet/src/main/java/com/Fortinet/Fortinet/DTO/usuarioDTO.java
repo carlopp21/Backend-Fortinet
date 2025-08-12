@@ -17,7 +17,6 @@ public class usuarioDTO {
     @NotBlank(message = "Nombre de usuario no puede estar vacio")
     private String nitEmpresa;
 
-    @NotBlank(message = "Nombre de usuario no puede estar vacio")
     private enumLicencia tipoLicencia;
 
     @NotBlank(message = "El puesto del usuario no puede estar vacio")
