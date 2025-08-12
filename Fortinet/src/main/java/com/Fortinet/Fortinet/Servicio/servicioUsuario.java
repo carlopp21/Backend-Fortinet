@@ -28,12 +28,13 @@ public class servicioUsuario {
 
     public Usuario registroUsuario(usuarioDTO dto){
         Usuario usuarioCreado  = Usuario.builder()
+                .nombreEmpresa(dto.getNombreEmpresa())
                 .nombreUsuario(dto.getNombreUsuario())
+                .nitEmpresa(dto.getNitEmpresa())
+                .tipoLicencia(dto.getTipoLicencia())
                 .numeroTelefono(dto.getNumeroTelefono())
                 .cargoUsuario(dto.getCargoUsuario())
                 .correoUsuario(dto.getCorreoUsuario())
-                .nombreEmpresa(dto.getNombreEmpresa())
-
                 .build();
         Usuario creado = usuariorepositorio.save(usuarioCreado);
 
