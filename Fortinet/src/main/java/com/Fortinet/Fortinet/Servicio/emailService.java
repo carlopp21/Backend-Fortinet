@@ -23,16 +23,19 @@ public class emailService {
 
     public void sendHtmlEmailTemplate(Usuario usuario) throws MessagingException {
         Context ctx = new Context();
-        // Añade TODOS los campos necesarios
+        // Variables que usa la plantilla (asegúrate que los getters existen en Usuario)
         ctx.setVariable("nombreEmpresa", usuario.getNombreEmpresa());
-        ctx.setVariable("nombreUsuario", usuario.getNombreUsuario()); // Faltaba
-        ctx.setVariable("cargoUsuario", usuario.getCargoUsuario());   // Faltaba
+        ctx.setVariable("nombreUsuario", usuario.getNombreUsuario());
+        ctx.setVariable("cargoUsuario", usuario.getCargoUsuario());
         ctx.setVariable("numeroTelefono", usuario.getNumeroTelefono());
-        ctx.setVariable("correoUsuario", usuario.getCorreoUsuario()); // Faltaba
-        ctx.setVariable("nitEmpresa", usuario.getNitEmpresa());       // Faltaba
-        ctx.setVariable("tipoLicencia", usuario.getTipoLicencia());   // Faltaba
+        ctx.setVariable("correoUsuario", usuario.getCorreoUsuario());
+        ctx.setVariable("nitEmpresa", usuario.getNitEmpresa());
+        ctx.setVariable("tipoLicencia", usuario.getTipoLicencia() != null ? usuario.getTipoLicencia().name() : null);
 
         String htmlBody = templateEngine.process("email", ctx);
+
+        // Puedes loguear htmlBody para depurar:
+        System.out.println("HTML a enviar:\n" + htmlBody);
 
         sendhtmlEmail(
                 "comunicaciones@dataservic.com",
@@ -40,6 +43,7 @@ public class emailService {
                 htmlBody
         );
     }
+
 
     public void sendhtmlEmail(String to, String subject, String htmlBody) throws MessagingException {
         MimeMessage message = javaMailSender.createMimeMessage();
