@@ -3,6 +3,7 @@ package com.Fortinet.Fortinet.Controlador;
 import com.Fortinet.Fortinet.DTO.usuarioDTO;
 import com.Fortinet.Fortinet.Entidades.Usuario;
 import com.Fortinet.Fortinet.Servicio.servicioUsuario;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+
+import static org.springframework.http.ResponseEntity.status;
 
 @CrossOrigin(
         origins = {
@@ -37,7 +40,7 @@ public class controladorUsuario {
 
     @PostMapping("/public/registro")
     //Vamos a enviar los campos que estan en usuarioDTO
-    public ResponseEntity<?> registro(@RequestBody usuarioDTO request, BindingResult bindingResult){
+    public ResponseEntity<?> registro(@Valid @RequestBody usuarioDTO request, BindingResult bindingResult){
         try {
             if (bindingResult.hasErrors()){
                 //Mapeo con FieldError a : "campo mensaje"
@@ -49,8 +52,7 @@ public class controladorUsuario {
                 Map<String, Object> response = new HashMap<>();
                 response.put("status", HttpStatus.BAD_REQUEST.value());
                 response.put("Error", errores);
-                return ResponseEntity
-                        .status(HttpStatus.BAD_REQUEST)
+                return status(HttpStatus.BAD_REQUEST)
                         .body(response);
             }
 
@@ -66,16 +68,16 @@ public class controladorUsuario {
             response.put("nombreEmpresa", creado.getNombreEmpresa());
             response.put("nombreUsuario", creado.getNombreUsuario());
             response.put("nitEmpresa" , creado.getNitEmpresa());
-            response.put("tipoLicencia ", creado.getTipoLicencia());
-            response.put("cargoUsuario ", creado.getCargoUsuario());
-            response.put("numeroTelefono ", creado.getNumeroTelefono());
-            response.put("correoUsuario ", creado.getCorreoUsuario());
+            response.put("tipoLicencia", creado.getTipoLicencia());
+            response.put("cargoUsuario", creado.getCargoUsuario());
+            response.put("numeroTelefono", creado.getNumeroTelefono());
+            response.put("correoUsuario", creado.getCorreoUsuario());
             return ResponseEntity.ok(response);
 
-        }catch(IllegalArgumentException e) {
+        } catch (Exception e) {
             return ResponseEntity
                     .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Error al registrar: " + e.getMessage());
+                    .body("Ocurrió un error inesperado, por favor intenta más tarde.");
         }
     }
     @GetMapping("private")
@@ -91,8 +93,7 @@ public class controladorUsuario {
             List<Usuario> Cargos = serviciousuario.MostrarPorCargos(cargoUsuario);
             return ResponseEntity.ok(Cargos);
         } catch (IllegalArgumentException e) {
-            return ResponseEntity
-                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
+            return status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("Error al mostrar " + e.getMessage());
         }
     }
@@ -103,8 +104,7 @@ public class controladorUsuario {
         List<Usuario> Correo = serviciousuario.MostrarPorCorreo(correoUsuario);
         return ResponseEntity.ok(Correo);
         }catch (IllegalArgumentException e) {
-            return ResponseEntity
-                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
+            return status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("Error al mostrar " + e.getMessage());
         }
     }
