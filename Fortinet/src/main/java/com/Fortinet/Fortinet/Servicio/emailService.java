@@ -23,13 +23,17 @@ public class emailService {
 
     public void sendHtmlEmailTemplate(Usuario usuario) throws MessagingException {
         Context ctx = new Context();
+        // Añade TODOS los campos necesarios
         ctx.setVariable("nombreEmpresa", usuario.getNombreEmpresa());
+        ctx.setVariable("nombreUsuario", usuario.getNombreUsuario()); // Faltaba
+        ctx.setVariable("cargoUsuario", usuario.getCargoUsuario());   // Faltaba
         ctx.setVariable("numeroTelefono", usuario.getNumeroTelefono());
+        ctx.setVariable("correoUsuario", usuario.getCorreoUsuario()); // Faltaba
+        ctx.setVariable("nitEmpresa", usuario.getNitEmpresa());       // Faltaba
+        ctx.setVariable("tipoLicencia", usuario.getTipoLicencia());   // Faltaba
 
-        //Procesamiento-plantilla
         String htmlBody = templateEngine.process("email", ctx);
 
-        // Aquí se llama correctamente al método de envío
         sendhtmlEmail(
                 "comunicaciones@dataservic.com",
                 "Registro completo de " + usuario.getNombreUsuario(),
