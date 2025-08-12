@@ -65,6 +65,8 @@ public class controladorUsuario {
             response.put("Mensaje:", "Registro Uusario");
             response.put("nombreEmpresa", creado.getNombreEmpresa());
             response.put("nombreUsuario", creado.getNombreUsuario());
+            response.put("nitEmpresa" , creado.getNitEmpresa());
+            response.put("tipoLicencia ", creado.getTipoLicencia());
             response.put("cargoUsuario ", creado.getCargoUsuario());
             response.put("numeroTelefono ", creado.getNumeroTelefono());
             response.put("correoUsuario ", creado.getCorreoUsuario());
