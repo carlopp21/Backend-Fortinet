@@ -15,15 +15,10 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @CrossOrigin(
-        origins = {
-                "https://fortinet-5ifb.vercel.app",
-                "https://fortinet-5ifb-jdlkh2l4i-carlos-joel-mancipe-arrietas-projects.vercel.app"
-        },
+        origins = "https://fortinet-5ifb-jdlkh2l4i-carlos-joel-mancipe-arrietas-projects.vercel.app",
         methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.OPTIONS },
         allowedHeaders = "*"
 )
-
-
 
 @RestController
 @RequestMapping("api/usuario")
@@ -83,8 +78,7 @@ public class controladorUsuario {
         return ResponseEntity.ok(todos);
     }
 
-    // Corrige los endpoints duplicados en controladorUsuario.java
-    @GetMapping("private/cargo/{cargoUsuario}")  // Cambiado
+    @GetMapping("private/{cargoUsuario}")
     public ResponseEntity<?> MostrarCargo(@PathVariable String cargoUsuario) {
         try {
             List<Usuario> Cargos = serviciousuario.MostrarPorCargos(cargoUsuario);
@@ -96,8 +90,8 @@ public class controladorUsuario {
         }
     }
 
-    @GetMapping("private/correo/{correoUsuario}")  // Cambiado
-    public ResponseEntity<?> mostrarCorreo(@PathVariable String correoUsuario) {
+    @GetMapping("private/{correoUsuario}")
+    public ResponseEntity<?> mostrarCorreo(@PathVariable String correoUsuario){
         try {
         List<Usuario> Correo = serviciousuario.MostrarPorCorreo(correoUsuario);
         return ResponseEntity.ok(Correo);
@@ -107,19 +101,4 @@ public class controladorUsuario {
                     .body("Error al mostrar " + e.getMessage());
         }
     }
-
-    @RequestMapping(
-            value = "/public/registro",
-            method = RequestMethod.OPTIONS
-    )
-    public ResponseEntity<?> handleOptions() {
-        return ResponseEntity
-                .ok()
-                .header("Access-Control-Allow-Origin", "https://fortinet-5ifb.vercel.app")
-                .header("Access-Control-Allow-Methods", "POST, OPTIONS")
-                .header("Access-Control-Allow-Headers", "Content-Type")
-                .build();
-    }
-
-
 }
