@@ -82,7 +82,8 @@ public class controladorUsuario {
         return ResponseEntity.ok(todos);
     }
 
-    @GetMapping("private/{cargoUsuario}")
+    // Corrige los endpoints duplicados en controladorUsuario.java
+    @GetMapping("private/cargo/{cargoUsuario}")  // Cambiado
     public ResponseEntity<?> MostrarCargo(@PathVariable String cargoUsuario) {
         try {
             List<Usuario> Cargos = serviciousuario.MostrarPorCargos(cargoUsuario);
@@ -94,8 +95,8 @@ public class controladorUsuario {
         }
     }
 
-    @GetMapping("private/{correoUsuario}")
-    public ResponseEntity<?> mostrarCorreo(@PathVariable String correoUsuario){
+    @GetMapping("private/correo/{correoUsuario}")  // Cambiado
+    public ResponseEntity<?> mostrarCorreo(@PathVariable String correoUsuario) {
         try {
         List<Usuario> Correo = serviciousuario.MostrarPorCorreo(correoUsuario);
         return ResponseEntity.ok(Correo);
@@ -105,4 +106,19 @@ public class controladorUsuario {
                     .body("Error al mostrar " + e.getMessage());
         }
     }
+
+    @RequestMapping(
+            value = "/public/registro",
+            method = RequestMethod.OPTIONS
+    )
+    public ResponseEntity<?> handleOptions() {
+        return ResponseEntity
+                .ok()
+                .header("Access-Control-Allow-Origin", "https://fortinet-5ifb.vercel.app")
+                .header("Access-Control-Allow-Methods", "POST, OPTIONS")
+                .header("Access-Control-Allow-Headers", "Content-Type")
+                .build();
+    }
+
+
 }
