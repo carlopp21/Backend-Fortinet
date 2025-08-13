@@ -48,13 +48,5 @@ public class servicioUsuario {
         return creado; //  Retornar la entidad guardada
 
     }
-    public List<Usuario> MostrarTodos(){
-        return usuariorepositorio.findAll();
-    }
-    public List<Usuario> MostrarPorCargos(String cargoUsuario){
-        return usuariorepositorio.findByCargoUsuario(cargoUsuario);
-    }
-    public List<Usuario>MostrarPorCorreo(String correoUsuario){
-        return usuariorepositorio.findByCorreoUsuario(correoUsuario);
-    }
+
 }

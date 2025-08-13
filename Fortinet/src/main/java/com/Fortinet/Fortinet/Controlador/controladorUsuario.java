@@ -77,34 +77,6 @@ public class controladorUsuario {
                     .body("Ocurrió un error inesperado, por favor intenta más tarde.");
         }
     }
-    @GetMapping("private")
-    public ResponseEntity<?> MostrarTodos(){
-        List<Usuario> todos = serviciousuario.MostrarTodos();
-        return ResponseEntity.ok(todos);
-    }
-
-    // Corrige los endpoints duplicados en controladorUsuario.java
-    @GetMapping("private/cargo/{cargoUsuario}")  // Cambiado
-    public ResponseEntity<?> MostrarCargo(@PathVariable String cargoUsuario) {
-        try {
-            List<Usuario> Cargos = serviciousuario.MostrarPorCargos(cargoUsuario);
-            return ResponseEntity.ok(Cargos);
-        } catch (IllegalArgumentException e) {
-            return status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Error al mostrar " + e.getMessage());
-        }
-    }
-
-    @GetMapping("private/correo/{correoUsuario}")  // Cambiado
-    public ResponseEntity<?> mostrarCorreo(@PathVariable String correoUsuario) {
-        try {
-        List<Usuario> Correo = serviciousuario.MostrarPorCorreo(correoUsuario);
-        return ResponseEntity.ok(Correo);
-        }catch (IllegalArgumentException e) {
-            return status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Error al mostrar " + e.getMessage());
-        }
-    }
 
     @RequestMapping(
             value = "/public/registro",
