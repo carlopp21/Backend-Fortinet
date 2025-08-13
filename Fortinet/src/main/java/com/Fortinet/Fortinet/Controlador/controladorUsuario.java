@@ -18,10 +18,7 @@ import java.util.stream.Collectors;
 import static org.springframework.http.ResponseEntity.status;
 
 @CrossOrigin(
-        origins = {
-                "https://fortinet-5ifb.vercel.app",
-                "https://fortinet-5ifb-jdlkh2l4i-carlos-joel-mancipe-arrietas-projects.vercel.app"
-        },
+        origins = "https://ciberseguridad-three.vercel.app",
         methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.OPTIONS },
         allowedHeaders = "*"
 )
@@ -116,7 +113,7 @@ public class controladorUsuario {
     public ResponseEntity<?> handleOptions() {
         return ResponseEntity
                 .ok()
-                .header("Access-Control-Allow-Origin", "https://fortinet-5ifb.vercel.app")
+                .header("Access-Control-Allow-Origin", "https://ciberseguridad-three.vercel.app")
                 .header("Access-Control-Allow-Methods", "POST, OPTIONS")
                 .header("Access-Control-Allow-Headers", "Content-Type")
                 .build();

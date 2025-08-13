@@ -10,14 +10,11 @@ public class CorsConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOriginPatterns(
-                        "https://fortinet-5ifb.vercel.app",
-                        "https://fortinet-5ifb-*.vercel.app"
-                )
+                // Corrección: Usar un solo dominio válido
+                .allowedOriginPatterns("https://ciberseguridad-three.vercel.app")
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
                 .allowCredentials(true);
     }
 }
-
 
